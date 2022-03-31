@@ -1,7 +1,6 @@
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
 const webpack = require('webpack');
 const PACKAGE = require('./package.json');
 const banner = PACKAGE.name + ' ' + PACKAGE.version;
@@ -22,16 +21,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'ui.min.css'
-    }),
-    new FileManagerPlugin({
-      onEnd: {
-        archive: [
-          {
-            source: '{*.*,dist/*,src/*}',
-            destination: 'installation.zip'
-          }
-        ]
-      }
     })
   ],
   module: {
